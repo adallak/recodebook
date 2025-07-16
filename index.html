@@ -143,7 +143,7 @@
         .chapter-card {
             background: white;
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
         }
@@ -275,27 +275,24 @@ scenarios.
 
         <!-- Code Page -->
         <div id="code" class="page">
-            <h1 style="text-align: center; margin-bottom: 2rem; color: #333;">Chapter Code Examples</h1>
+            <h1 style="text-align: center; margin-bottom: 2rem; color: #333;">Chapter Hands-on Code</h1>
             
             <div class="chapter-grid">
                 <div class="chapter-card">
-                    <h3>Chapter 1: Introduction</h3>
-                    <p>Basic setup and hello world example.</p>
+                    <h3>Preliminary</h3>
+                    <p>Install complementary R package.</p>
                     <div class="code-block">
 # Hello World Example
-def hello_world():
-    print("Hello, World!")
-    
-if __name__ == "__main__":
-    hello_world()
+library(devtools)
+devtools::install_github("adallak/recode")
                     </div>
-                    <a href="#" class="download-btn" onclick="downloadCode('chapter1')">Download Code</a>
+                   //  <a href="#" class="download-btn" onclick="downloadCode('chapter1')">Download Code</a>
                 </div>
                 
                 <div class="chapter-card">
                     <h3>Chapter 2: Basic Concepts</h3>
                     <p>Core concepts and fundamental examples.</p>
-                    <div class="code-block">
+<!--                     <div class="code-block">
 # Basic concepts example
 class Example:
     def __init__(self, name):
@@ -307,7 +304,7 @@ class Example:
 # Usage
 example = Example("Reader")
 print(example.greet())
-                    </div>
+                    </div> -->
                     <a href="#" class="download-btn" onclick="downloadCode('chapter2')">Download Code</a>
                 </div>
                 
