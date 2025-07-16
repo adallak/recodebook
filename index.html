@@ -374,14 +374,70 @@ print(process_data(sample_data))
         }
 
         function downloadCode(chapter) {
-            // This is a simple example - you can implement actual file downloads
-            // For now, it just shows an alert
-            alert(`Downloading code for ${chapter}. You can implement actual file downloads here.`);
+            // GitHub repository configuration
+            const GITHUB_USERNAME = 'your-username';  // Replace with your GitHub username
+            const REPO_NAME = 'your-book-repo';       // Replace with your repository name
+            const BRANCH = 'main';                    // Usually 'main' or 'master'
             
-            // To implement real downloads, you could:
-            // 1. Create separate .py/.js files for each chapter
-            // 2. Use GitHub's raw file URLs
-            // 3. Or create downloadable content dynamically
+            // Construct GitHub raw file URL
+            const baseUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/${BRANCH}/code/`;
+            
+            // Map chapter names to actual file names
+            const chapterFiles = {
+                'chapter2': 'Chapter2.r',
+                // 'chapter2': 'chapter2_basic_concepts.py',
+                // 'chapter3': 'chapter3_advanced_topics.py',
+                // Add more chapters as needed
+            };
+            
+            const fileName = chapterFiles[chapter];
+            
+            if (!fileName) {
+                alert('Code file not found for this chapter.');
+                return;
+            }
+            
+            const downloadUrl = baseUrl + fileName;
+            
+            // Create a temporary link element and trigger download
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = fileName;
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Optional: Show feedback to user
+            showDownloadMessage(fileName);
+        }
+        
+        function showDownloadMessage(fileName) {
+            // Create a temporary message element
+            const message = document.createElement('div');
+            message.textContent = `Downloading ${fileName}...`;
+            message.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                z-index: 1000;
+                font-size: 14px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                if (message.parentNode) {
+                    message.parentNode.removeChild(message);
+                }
+            }, 3000);
         }
 
         // You can add more interactive features here
